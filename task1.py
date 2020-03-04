@@ -72,6 +72,8 @@ class Task1:
             self.max_y = max(y, self.max_y)
 
         self.height = self.max_y - self.min_y
+        if self.height == 0:
+            self.height = 2
 
     def update_arg(self):
         self.start = int(self.entry_start.get())
@@ -128,22 +130,16 @@ class Task1:
 
     def draw_line(self, window_size, real_size, start, draw, direction):
         cell_size = window_size / real_size
-        if cell_size < 1:
-            cell_size = 1
-            step = int(real_size / window_size) + 1
-        else:
-            cell_size = int(cell_size)
-            step = cell_size
-
-        size = 1 * direction
+        size = direction
         if (window_size / cell_size) > self.count_grid_line:
-            step = int(window_size / self.count_grid_line)
+            cell_size = window_size / self.count_grid_line
             size = direction * real_size / self.count_grid_line
-
-        for i in range(0, window_size+1, step):
+        
+        count = int(window_size / cell_size) + 1
+        for i in range(0, count):
             text = str(int(start))
             start += size
-            draw(i, text)
+            draw(i * cell_size, text)
 
     def draw_grid(self):
         self.draw_line(self.window_width,
