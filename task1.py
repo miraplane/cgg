@@ -13,7 +13,7 @@ class Task1:
         label_img = Label(self.frame, image=img)
         label_img.image = img
         label_img.grid(row=0, column=0, rowspan=3, columnspan=4)
-        Label(self.frame, text='Введите интервал:  [') \
+        Label(self.frame, text='Введите интервал:   x ∈ [') \
             .grid(row=3, column=0, sticky='e')
         Label(self.frame, text=']') \
             .grid(row=3, column=3, sticky='w')
