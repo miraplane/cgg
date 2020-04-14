@@ -30,7 +30,6 @@ class Task2:
         self.entry_end.grid(row=3, column=2)
         self.entry_a.grid(row=4, column=2)
 
-        self.pi = 180
         self.start = self.end = 0
         self.max_r = self.size = 0
         self.a = 0
@@ -50,20 +49,20 @@ class Task2:
             .grid(row=6, column=0, columnspan=4)
 
     def my_function(self, phi):
-        n = self.a * self.pi
+        n = self.a * math.pi
         if n == 0:
             return None
-        return 2 * phi / n
+        return 2 * math.radians(phi) / n
 
     def calculate_range(self):
         self.max_r = -math.inf
 
-        for phi in range(self.start, self.end):
+        for phi in range(self.start, self.end+1):
             r = self.my_function(phi)
             if not r:
                 continue
             self.coords.append((phi, r))
-            self.max_r = max(r, self.max_r)
+            self.max_r = max(math.fabs(r), self.max_r)
 
         self.size = round(self.max_r, 1)
 
@@ -150,7 +149,7 @@ class Task2:
         self.draw_axis()
 
     def rotate(self, point, angle):
-        angle = math.radians(360 - angle)
+        angle = math.radians(-1*angle)
         cos_val = math.cos(angle)
         sin_val = math.sin(angle)
 
@@ -166,6 +165,9 @@ class Task2:
     def paint(self):
         self.my_canvas.delete(ALL)
         self.update_arg()
+        if self.a == 0 or self.start - self.end == 0:
+            return
+
         self.calculate_range()
 
         self.draw_grid()
