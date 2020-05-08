@@ -1,6 +1,7 @@
 from tkinter import *
 from task1 import Task1
 from task2 import Task2
+from task3 import Task3
 
 
 class MainMenu:
@@ -20,7 +21,7 @@ class MainMenu:
         self.button3 = Button(self.frame,
                               text='Задача 3',
                               width=15,
-                              command=self.new_window)
+                              command=self.open_task3)
         self.button3.grid(row=2, pady=5, padx=35)
         self.button4 = Button(self.frame,
                               text='Задача 4',
@@ -49,6 +50,10 @@ class MainMenu:
     def open_task2(self):
         self.task2 = Toplevel(self.master)
         self.app = Task2(self.task2)
+
+    def open_task3(self):
+        self.task3 = Toplevel(self.master)
+        self.app = Task3(self.task3)
 
 
 if __name__ == "__main__":

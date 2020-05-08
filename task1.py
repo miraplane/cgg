@@ -9,7 +9,7 @@ class Task1:
         self.frame = Frame(self.master)
         self.frame.pack()
 
-        img = ImageTk.PhotoImage(Image.open('f.png').resize((280, 100)))
+        img = ImageTk.PhotoImage(Image.open('task1.png').resize((280, 100)))
         label_img = Label(self.frame, image=img)
         label_img.image = img
         label_img.grid(row=0, column=0, rowspan=3, columnspan=4)
