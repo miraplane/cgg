@@ -3,6 +3,7 @@ from task1 import Task1
 from task2 import Task2
 from task3 import Task3
 from task4 import Task4
+from task5 import Task5
 
 
 class MainMenu:
@@ -32,7 +33,7 @@ class MainMenu:
         self.button5 = Button(self.frame,
                               text='Задача 5',
                               width=15,
-                              command=self.new_window)
+                              command=self.open_task5)
         self.button5.grid(row=4, pady=5, padx=35)
         self.button6 = Button(self.frame,
                               text='Задача 6',
@@ -59,6 +60,10 @@ class MainMenu:
     def open_task4(self):
         self.task4 = Toplevel(self.master)
         self.app = Task4(self.task4)
+
+    def open_task5(self):
+        self.task5 = Toplevel(self.master)
+        self.app = Task5(self.task5)
 
 
 if __name__ == "__main__":
